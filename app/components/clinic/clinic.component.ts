@@ -21,7 +21,7 @@ export class ClinicComponent implements OnInit, OnChanges {
 	ngOnChanges()
 	{
 		if(this.clinic !== undefined) {
-
+			
 		}
 	}
 }
