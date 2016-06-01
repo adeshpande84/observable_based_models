@@ -1,0 +1,17 @@
+[
+		{
+			"id":"1",
+			"name":"chronic pain",
+			"description":"chronic pain clinic"
+		},
+		{
+			"id":"2",
+			"name":"hcv community",
+			"description":"Hepatitis C clinic"
+		},
+		{
+			"id":"3",
+			"name":"complex care",
+			"description":"complex care clinic"
+		}
+]
