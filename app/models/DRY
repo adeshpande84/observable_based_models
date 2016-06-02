@@ -1,0 +1,39 @@
+DRY
+Easy to understand
+Testable
+Reusable
+
+ModelBase
+
+Clinic
+Member
+
+Clinic hasMany Member
+  members() -> returns ModelObservableCollection 
+
+Member belongsToOne User
+  user() -> return Observable
+
+
+
+this.clinic.members() -> ModelCollection<Member>
+
+this.clinic.members().all() -> Member[]
+this.clinic.members().get('123') -> Member
+
+ModelObservableCollection
+  models = array<ModelBase>
+
+  all() {}
+  findById() {}
+  where() {}
+
+Member
+  all()
+  find(id)
+
+this.clinic.members().find('123').user() -> User
+
+this.member.user()
+
+

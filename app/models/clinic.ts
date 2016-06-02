@@ -3,7 +3,7 @@ import { ModelObservableCollection } from './model-observable-collection';
 import { Observable } from 'rxjs/Rx';
 
 export class Clinic extends ModelBase {
-	id: string;
+	  
   	name: string;
   	description: string;
 

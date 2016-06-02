@@ -6,9 +6,11 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             ModelObservableCollection = (function () {
-                function ModelObservableCollection() {
+                function ModelObservableCollection(ob) {
+                    this.observableModels = ob;
                 }
                 ModelObservableCollection.prototype.find = function (id) {
+                    return this.observableModels.filter(function (model) { return model.id == id; });
                 };
                 ModelObservableCollection.prototype.all = function () {
                 };

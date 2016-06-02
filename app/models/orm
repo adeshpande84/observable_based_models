@@ -16,3 +16,75 @@ ModelObservableCollection
 
 Member
 	user(): Observable<ModelBase>
+
+this.clinic.members().
+
+ObservableModel
+	
+ObservableModelCollection
+
+-------------------------------------------------------------------------
+clinic hasmany members
+
+get /Clinics/{id}/members
+this.clinic.members().all()
+
+post /Clinics/{id}/members
+this.clinic.members().create({})
+
+delete /Clinics/{id}/members
+this.clinic.members().delete()
+
+get /Clinics/{id}/members/{fk}
+this.clinic.members().find('123')
+
+delete /Clinics/{id}/members/{fk}
+this.clinic.members().delete('123')
+
+put /Clinics/{id}/members/{fk}
+this.clinic.members().update({},'123')
+
+get /Clinics/{id}/members/count
+this.clinic.members().count()
+
+-------------------------------------------------------------------------
+member belongsTo user
+
+get /Members/{id}/eauser
+this.member.user()
+-------------------------------------------------------------------------
+
+clinic.ts
+	members() {
+		return this.hasMany(Member.api_route_plural)
+	}
+
+member.ts
+	user() {
+		return this.belongsTo(User.api_route_singular)
+	}	
+
+
+belongsTo : Observable<ModelBase>
+
+hasMany: Observable<ModelBase[]>
+
+
+
+
+modelbase
+	hasMany()
+	{
+		return new ModelCollection
+	}
+
+	belongsTo()
+	{
+		
+	}
+relation.ts
+
+hasMany.ts
+
+
+
