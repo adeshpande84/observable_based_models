@@ -1,4 +1,6 @@
 import { ModelBase } from './model-base';
+import { ModelObservableCollection } from './model-observable-collection';
+import { Observable } from 'rxjs/Rx';
 
 export class Clinic extends ModelBase {
 	id: string;
@@ -15,5 +17,10 @@ export class Clinic extends ModelBase {
 	    this.name = name;
 	    this.description = description;
 	    
+  	}
+
+  	members() {
+  		//return ModelObservableCollection
+
   	}
 }

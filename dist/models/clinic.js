@@ -24,6 +24,9 @@ System.register(['./model-base'], function(exports_1, context_1) {
                     this.name = name;
                     this.description = description;
                 }
+                Clinic.prototype.members = function () {
+                    //return ModelObservableCollection
+                };
                 return Clinic;
             }(model_base_1.ModelBase));
             exports_1("Clinic", Clinic);

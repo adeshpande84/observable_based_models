@@ -1,1 +1,1 @@
-{"version":3,"file":"model-observable-collection.js","sourceRoot":"","sources":["../../app/models/model-observable-collection.ts"],"names":[],"mappings":";;;;;;;YAGA;gBAAA;gBAEA,CAAC;gBAAD,gCAAC;YAAD,CAAC,AAFD,IAEC;YAFD,iEAEC,CAAA"}
+{"version":3,"file":"model-observable-collection.js","sourceRoot":"","sources":["../../app/models/model-observable-collection.ts"],"names":[],"mappings":";;;;;;;YAGA;gBAAA;gBAaA,CAAC;gBAVA,wCAAI,GAAJ,UAAK,EAAU;gBAGf,CAAC;gBAED,uCAAG,GAAH;gBAGA,CAAC;gBAEF,gCAAC;YAAD,CAAC,AAbD,IAaC;YAbD,iEAaC,CAAA"}

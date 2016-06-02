@@ -1,0 +1,18 @@
+this.clinic.members() : ModelObservableCollection
+
+member = this.clinic.members().find('123').subscribe()
+
+
+members = this.clinic.members().all().subscribe();
+
+foreach(member of members) {
+	member->user()
+}
+
+ModelObservableCollection
+	find(id) : Observable<ModelBase>
+	all() : Observable<ModelBase[]>
+	//get(columns): Observable<ModelBase[]>
+
+Member
+	user(): Observable<ModelBase>
