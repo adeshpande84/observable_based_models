@@ -3,6 +3,7 @@ import { Http, Response } from 'angular2/http';
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import { Clinic } from '../../models/clinic';
+import { Member } from '../../models/member';
 
 @Component({
 	selector: 'clinic',
@@ -10,18 +11,21 @@ import { Clinic } from '../../models/clinic';
 })
 export class ClinicComponent implements OnInit, OnChanges { 
 
-	@Input() clinic;
-	constructor(public http: Http) { }
+	@Input() clinic: Clinic;
+	public members: Member[];
+
+	constructor(public http: Http) { this.members = []; }
 	
 	ngOnInit()
 	{
-		
+		//this.clinic.members();
+		this.clinic.members().all().subscribe(data => {
+			this.members.push(<Member>data);
+		});
 	}
 
 	ngOnChanges()
 	{
-		if(this.clinic !== undefined) {
-			
-		}
+		
 	}
 }

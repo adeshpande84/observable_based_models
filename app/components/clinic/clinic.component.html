@@ -1,4 +1,7 @@
 <div style="border-style:solid;padding-bottom:5px;padding-left:5px;margin-bottom:5px">
 	<h3>{{clinic.name}}</h3>
 	<b>{{clinic.description}}</b>
+	<div *ngFor="let member of members">
+		- {{member.user_id}}
+	</div>
 </div>
