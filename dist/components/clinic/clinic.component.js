@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', '../../models/clinic'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', '../../models/clinic', '../../models/member', '../member/member.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', '../
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, clinic_1;
+    var core_1, http_1, clinic_1, member_1, member_component_1;
     var ClinicComponent;
     return {
         setters:[
@@ -23,21 +23,42 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', '../
             function (_1) {},
             function (clinic_1_1) {
                 clinic_1 = clinic_1_1;
+            },
+            function (member_1_1) {
+                member_1 = member_1_1;
+            },
+            function (member_component_1_1) {
+                member_component_1 = member_component_1_1;
             }],
         execute: function() {
             ClinicComponent = (function () {
                 function ClinicComponent(http) {
                     this.http = http;
                     this.members = [];
+                    console.log('constructor clinic component');
                 }
                 ClinicComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    //this.clinic.members();
-                    this.clinic.members().all().subscribe(function (data) {
-                        _this.members.push(data);
-                    });
+                };
+                ClinicComponent.prototype.createMemberObjects = function (data) {
+                    var c = [];
+                    for (var i = 0; i < data.length; i++) {
+                        c.push(new member_1.Member(data[i].clinic_id, data[i].user_id, data[i].id));
+                    }
+                    console.log(c);
+                    return c;
                 };
                 ClinicComponent.prototype.ngOnChanges = function () {
+                    var _this = this;
+                    //this.clinic.members();
+                    console.log('ClinicComponent ngOnChanges');
+                    if (this.clinic !== undefined) {
+                        console.log('clinic is undefined - ' + this.clinic.name);
+                        this.clinic.members().all().subscribe(function (data) {
+                            console.log(data);
+                            _this.members = _this.createMemberObjects(data);
+                            console.log(_this.members);
+                        });
+                    }
                 };
                 __decorate([
                     core_1.Input(), 
@@ -46,7 +67,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', '../
                 ClinicComponent = __decorate([
                     core_1.Component({
                         selector: 'clinic',
-                        templateUrl: 'app/components/clinic/clinic.component.html'
+                        templateUrl: 'app/components/clinic/clinic.component.html',
+                        directives: [member_component_1.MemberComponent]
                     }), 
                     __metadata('design:paramtypes', [http_1.Http])
                 ], ClinicComponent);

@@ -23,16 +23,7 @@ export class ClinicsComponent implements OnInit, OnChanges {
 		
 		this.http.get(this.clinicsUrl).map(res => res.json()).subscribe(
 			data => {this.clinics = this.createClinicObjects(data); console.log('subscribed to: ');console.log(data);});
-		
-		//Observable.from([1,2,3]).subscribe(data=>{console.log('subscribed '+data);});
-		
-		/*this.http.get(this.clinicsUrl).map(res => res.json()).subscribe(data => {
-			this.tempObs = <Observable<Clinic>>Observable.from(data);
-			this.tempObs.subscribe(data=>console.log('subscribed2 to: '+ data.name));
-		});*/
-
-		
-		
+				
 	}
 
 	createClinicObjects(data)

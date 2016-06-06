@@ -24,12 +24,6 @@ export class Clinic extends ModelBase {
 
   	members() 
     {
-  		//return ModelObservableCollection
-      /*this.http.get(this.clinicsUrl).map(res => res.json()).subscribe(data => {
-        this.tempObs = new ModelObservableCollection(<Observable<Clinic>>Observable.from(data));
-        this.tempObs.find("3").subscribe(data => {let t = <Clinic>data; console.log(t.name);})
-      });*/
-      
-      return this.hasMany<Member>(Member.apiRoute,'clinic_id', this.id);
+      return this.hasMany<Member>(Member.apiRoute,'clinic_id');
   	}
 }

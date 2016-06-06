@@ -1,4 +1,4 @@
-System.register(['./model-base', './member'], function(exports_1, context_1) {
+System.register(['./model-base'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __extends = (this && this.__extends) || function (d, b) {
@@ -6,35 +6,28 @@ System.register(['./model-base', './member'], function(exports_1, context_1) {
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
-    var model_base_1, member_1;
-    var Clinic;
+    var model_base_1;
+    var User;
     return {
         setters:[
             function (model_base_1_1) {
                 model_base_1 = model_base_1_1;
-            },
-            function (member_1_1) {
-                member_1 = member_1_1;
             }],
         execute: function() {
-            Clinic = (function (_super) {
-                __extends(Clinic, _super);
-                //static apiRoute: string = '';
-                function Clinic(name, description, id) {
+            User = (function (_super) {
+                __extends(User, _super);
+                function User(name, id) {
                     _super.call(this);
                     if (id !== undefined && id != '') {
                         this.id = id;
                     }
                     this.name = name;
-                    this.description = description;
                 }
-                Clinic.prototype.members = function () {
-                    return this.hasMany(member_1.Member.apiRoute, 'clinic_id');
-                };
-                return Clinic;
+                User.apiRoute = 'app/mock_data/users.json';
+                return User;
             }(model_base_1.ModelBase));
-            exports_1("Clinic", Clinic);
+            exports_1("User", User);
         }
     }
 });
-//# sourceMappingURL=clinic.js.map
+//# sourceMappingURL=user.js.map
