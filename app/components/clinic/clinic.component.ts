@@ -24,14 +24,13 @@ export class ClinicComponent implements OnInit, OnChanges {
 		
 	}
 
-	createMemberObjects(data)
+	createMemberObject(data)
 	{
-		let c: Member[] = [];
-		for(var i=0; i<data.length; i++) {
-			c.push(new Member(data[i].clinic_id,data[i].user_id,data[i].id));
-		}
-		console.log(c);
-		return c;
+		
+		//for(var i=0; i<data.length; i++) {
+			this.members.push(new Member(data.clinic_id,data.user_id,data.id));
+		//}
+		
 
 	}
 
@@ -40,10 +39,13 @@ export class ClinicComponent implements OnInit, OnChanges {
 		//this.clinic.members();
 		console.log('ClinicComponent ngOnChanges');
 		if(this.clinic !== undefined) {
-			console.log('clinic is undefined - ' + this.clinic.name);
-			this.clinic.members().all().subscribe(data => { console.log(data);
-				this.members = this.createMemberObjects(data);console.log(this.members);
-			});
+			console.log('clinic is defined - ' + this.clinic.name);
+			this.clinic.members().all().subscribe(data => {
+				this.createMemberObject(data);
+			},
+			err => console.log(err),
+			() => console.log(this.members)
+			);
 		}
 	}
 }

@@ -31,14 +31,17 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', '../
                     console.log('member constructor');
                 }
                 MemberComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    console.log('member onInit');
-                    this.member.user().get().subscribe(function (data) {
-                        console.log(data);
-                        _this.user = data;
-                    });
                 };
                 MemberComponent.prototype.ngOnChanges = function () {
+                    var _this = this;
+                    console.log('member onchange');
+                    var o = this.member.user().observableModel.subscribe(function (data) {
+                        console.log('user:');
+                        console.log(data);
+                    });
+                    this.member.user().get().subscribe(function (data) {
+                        _this.user = data;
+                    });
                 };
                 __decorate([
                     core_1.Input(), 

@@ -4,19 +4,23 @@ import {HTTP_PROVIDERS, Http, Response, XHRBackend} from 'angular2/http';
 
 export class BelongsTo<T> extends Relation {
 	
-	private observableModel: Observable<T>;
+	public observableModel: Observable<T>;
 
 	constructor(apiRoute: string, private primaryKey: string, id: string)
 	{
 		super(apiRoute);
-		console.log(primaryKey);
-		console.log(id);
-		this.observableModel = this.http.get(apiRoute).map(res => res.json()).filter((model: T) => { return model[primaryKey] == id; });
+		let v = this.http.get(apiRoute).flatMap(res => { 
+			let objects = res.json(); return <Observable<T>>Observable.from(objects); 
+		});
+		
+		this.observableModel = v.filter((model: T) => { return model[primaryKey] == id; });
+		/*this.observableModel = this.http.get(apiRoute).flatMap(res => res.json()).filter((model: T) => { return model[primaryKey] == id; });*/
 
 	}
 
-	get()
+	public get()
 	{
+		console.log('BelongsTo get');
 		return this.observableModel;
 	}
 }

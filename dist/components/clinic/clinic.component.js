@@ -39,25 +39,20 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', '../
                 }
                 ClinicComponent.prototype.ngOnInit = function () {
                 };
-                ClinicComponent.prototype.createMemberObjects = function (data) {
-                    var c = [];
-                    for (var i = 0; i < data.length; i++) {
-                        c.push(new member_1.Member(data[i].clinic_id, data[i].user_id, data[i].id));
-                    }
-                    console.log(c);
-                    return c;
+                ClinicComponent.prototype.createMemberObject = function (data) {
+                    //for(var i=0; i<data.length; i++) {
+                    this.members.push(new member_1.Member(data.clinic_id, data.user_id, data.id));
+                    //}
                 };
                 ClinicComponent.prototype.ngOnChanges = function () {
                     var _this = this;
                     //this.clinic.members();
                     console.log('ClinicComponent ngOnChanges');
                     if (this.clinic !== undefined) {
-                        console.log('clinic is undefined - ' + this.clinic.name);
+                        console.log('clinic is defined - ' + this.clinic.name);
                         this.clinic.members().all().subscribe(function (data) {
-                            console.log(data);
-                            _this.members = _this.createMemberObjects(data);
-                            console.log(_this.members);
-                        });
+                            _this.createMemberObject(data);
+                        }, function (err) { return console.log(err); }, function () { return console.log(_this.members); });
                     }
                 };
                 __decorate([

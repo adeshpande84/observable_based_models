@@ -1,5 +1,4 @@
 import { ModelBase } from './model-base';
-import { ModelObservableCollection } from './model-observable-collection';
 import { Observable } from 'rxjs/Rx';
 import { User } from './user';
 
@@ -24,6 +23,7 @@ export class Member extends ModelBase {
 
   	user()
   	{
-  		return this.belongsTo<User>(User.apiRoute,'user_id',this.user_id);
+  		//console.log("member user(): "+this.user_id);
+  		return this.belongsTo<User>(User.apiRoute,'id',this.user_id);
   	}
 }

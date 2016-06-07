@@ -19,15 +19,19 @@ export class MemberComponent implements OnInit, OnChanges {
 	ngOnInit()
 	{
 		
-		console.log('member onInit');
-		this.member.user().get().subscribe(data => { console.log(data);
-			this.user = <User>data;
-		});
+		
 	}
 
 	ngOnChanges()
 	{
 		
+		console.log('member onchange');
+		let o = this.member.user().observableModel.subscribe(data => {
+			console.log('user:');
+			console.log(data);
+		});
 		
+		this.member.user().get().subscribe(data => { this.user = <User>data;
+		});
 	}
 }

@@ -4,7 +4,6 @@ import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import { ClinicComponent } from '../clinic/clinic.component';
 import { Clinic } from '../../models/clinic';
-import { ModelObservableCollection } from '../../models/model-observable-collection';
 
 @Component({
 	selector: 'clinics',

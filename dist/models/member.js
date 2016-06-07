@@ -28,7 +28,8 @@ System.register(['./model-base', './user'], function(exports_1, context_1) {
                     this.user_id = user_id;
                 }
                 Member.prototype.user = function () {
-                    return this.belongsTo(user_1.User.apiRoute, 'user_id', this.user_id);
+                    //console.log("member user(): "+this.user_id);
+                    return this.belongsTo(user_1.User.apiRoute, 'id', this.user_id);
                 };
                 Member.apiRoute = 'app/mock_data/members.json';
                 return Member;

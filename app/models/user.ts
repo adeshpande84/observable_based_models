@@ -1,5 +1,4 @@
 import { ModelBase } from './model-base';
-import { ModelObservableCollection } from './model-observable-collection';
 import { Observable } from 'rxjs/Rx';
 
 export class User extends ModelBase {

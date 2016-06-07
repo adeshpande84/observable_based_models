@@ -28,6 +28,12 @@ System.register(['./relation', 'rxjs/Rx'], function(exports_1, context_1) {
                     });
                     this.observableModels = v.filter(function (model) { return model[foreignKey] == id; });
                 }
+                HasMany.prototype.find = function (id) {
+                    return this.observableModels.filter(function (model) { return model['id'] == id; });
+                };
+                HasMany.prototype.all = function () {
+                    return this.observableModels;
+                };
                 return HasMany;
             }(relation_1.Relation));
             exports_1("HasMany", HasMany);

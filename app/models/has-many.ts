@@ -15,4 +15,15 @@ export class HasMany<T> extends Relation {
 		
 		this.observableModels = v.filter((model: T) => { return model[foreignKey] == id; });
 	}
+
+	find(id: string)
+	{
+			
+		return this.observableModels.filter( (model:T) => {return model['id'] == id; });
+	}
+
+	all()
+	{
+		return this.observableModels;
+	}
 }
